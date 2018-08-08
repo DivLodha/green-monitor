@@ -1,0 +1,29 @@
+{
+  "name": "green-monitor",
+  "version": "1.0.0",
+  "description": "A web application to help reduce carbon footprint and improve waste management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abeer023/green-monitor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abeer023/green-monitor/issues"
+  },
+  "homepage": "https://github.com/abeer023/green-monitor#readme",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  }
+}
