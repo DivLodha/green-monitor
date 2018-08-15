@@ -30,7 +30,7 @@ class SimpleAppBar extends Component {
           </IconButton> */}
             <Typography
               variant="headline"
-              className={styles.flex}
+              
               color="inherit"
               style={{ flex: 1 }}
             >
