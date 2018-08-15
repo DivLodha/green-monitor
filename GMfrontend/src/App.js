@@ -3,6 +3,7 @@ import About from "./routes/about/index";
 import Users from "./routes/users/index";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import Register from "./routes/register";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={About} />
         <Route path="/about" component={About} />
+        <Route path="/register" component={Register} />
         <Route path="/users" component={Users} />
       </Switch>
     );
