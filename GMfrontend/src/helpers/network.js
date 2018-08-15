@@ -2,7 +2,7 @@ import { getToken } from "./authentication";
 
 function loginRequest({ email, password }) {
   return new Promise((resolve, reject) => {
-    fetch("http://localhost:5000/users/login", {
+    fetch("https://green-monitor123.herokuapp.com/users/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json; charset=utf-8"
@@ -29,7 +29,7 @@ function loginRequest({ email, password }) {
 
 function getDashboard() {
   return new Promise((resolve, reject) => {
-    fetch("http://localhost:5000/dashboard", {
+    fetch("https://green-monitor123.herokuapp.com/dashboard", {
       headers: {
         Authorization: getToken()
       }
