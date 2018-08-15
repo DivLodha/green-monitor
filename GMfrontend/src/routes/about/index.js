@@ -7,7 +7,7 @@ const AboutContent = props => {
         className="page-header header-filter"
         data-parallax="true"
         style={{
-          "background-image":
+          backgroundImage:
             "url('https://unearthed.greenpeace.org/wp-content/uploads/2018/05/GettyImages-625668026.jpg')"
         }}
       >
@@ -43,7 +43,7 @@ const AboutContent = props => {
                 <h2 className="title">What&apos;s happening?</h2>
                 <h5
                   className="description"
-                  style={{ "text-align": "justify", color: "656565" }}
+                  style={{ textAlign: "justify", color: "656565" }}
                 >
                   Due to human activities, the atmospheric concentration of
                   carbon dioxide has been rising extensively since the
