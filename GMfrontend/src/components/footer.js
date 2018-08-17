@@ -8,11 +8,8 @@ const Footer = props => {
           <nav className="float-left">
             <ul>
               <li>
-                <a href="">About Us</a>
-              </li>
-              <li>
-                <a href="">Blog</a>
-              </li>
+                <a href="/about">About Us</a>
+              </li>             
             </ul>
           </nav>
           <div className="copyright float-right">

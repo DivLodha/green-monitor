@@ -1,11 +1,46 @@
 import React, { Component } from "react";
 import Layout from "../../components/Layout";
 import { Redirect } from "react-router-dom";
+import { registerRequest,loginRequest } from "../../helpers/network";
+import { saveUser } from "../../helpers/authentication";
 
 class Register extends Component {
+  state = {
+    error: null,
+    loggedin: null
+  };
+  updateVal = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  submitForm = async e => {
+    e.preventDefault();
+    this.setState({
+      error: null
+    });
+    try {
+      let response = await registerRequest({
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      });
+      let loginResponse = await loginRequest({
+        email: this.state.email,
+        password: this.state.password
+      });
+      saveUser(loginResponse);
+      this.setState({
+        loggedin: true
+      });
+    } catch (e) {
+      this.setState({
+        error: e.email
+      });
+    }
+  };
   render() {
     return (
       <Layout>
+          {this.state.loggedin ? <Redirect to="/users/" /> : null}
         <div className="row">
           <div className="col">
             <h1 className="heading">Please Register</h1>

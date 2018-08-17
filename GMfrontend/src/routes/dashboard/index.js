@@ -17,7 +17,7 @@ const Row = props => {
 const Loading = props => {
   return (
     <div className="alert alert-info" role="alert">
-      Logging In Please Wait
+      Loading ...Please Wait
     </div>
   );
 };

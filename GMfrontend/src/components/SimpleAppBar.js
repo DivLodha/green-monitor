@@ -6,6 +6,8 @@ import {
   Button,
   IconButton
 } from "@material-ui/core";
+import { userLogout, isLoggedIn, userInfo } from "../helpers/authentication";
+
 import MenuIcon from "@material-ui/icons/Menu";
 const styles = {
   root: {
@@ -20,32 +22,42 @@ const styles = {
   }
 };
 class SimpleAppBar extends Component {
+  logout = e => {
+    userLogout();
+    window.location.href = "/";
+  };
   render() {
+    const full_name = isLoggedIn() ? userInfo().full_name : null;
     return (
       <div className={styles.root}>
         <AppBar position="static">
-          <Toolbar>
-            {/* <IconButton className={styles.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton> */}
-            <Typography
-              variant="headline"
-              
-              color="inherit"
-              style={{ flex: 1 }}
-            >
+          <Toolbar>           
+            <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
               Green Monitor
             </Typography>
-            <div>
-              <Button color="inherit" href="/about">
+            <Button color="inherit" href="/about">
                 About
-              </Button>
-              <Button color="inherit" href="/register">
-                Register
-              </Button>
+              </Button>              
               <Button color="inherit" href="/users/">
                 Dashboard
               </Button>
+            <div>
+
+             
+              {isLoggedIn() ? (
+          <div>
+            <Button color="inherit" onClick={this.logout}>Logout</Button>
+            <Button color="inherit">Welcome {full_name}!</Button>
+          </div>
+        ) : 
+       ( <div>
+       <Button color="inherit" href="/register">
+                Register
+       </Button>
+        <Button color="inherit" href="/users/login">
+        Login
+        </Button>
+        </div>)}
             </div>
           </Toolbar>
         </AppBar>
