@@ -37,7 +37,10 @@ class SimpleAppBar extends Component {
             </Typography>
             <Button color="inherit" href="/about">
                 About
-              </Button> 
+              </Button>              
+              <Button color="inherit" href="/users/">
+                Add Device
+              </Button>              
             <div>
 
              
