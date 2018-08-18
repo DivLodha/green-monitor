@@ -41,11 +41,15 @@ class SimpleAppBar extends Component {
               <Button color="inherit" href="/users/">
                 Dashboard
               </Button>
+              
             <div>
 
              
               {isLoggedIn() ? (
           <div>
+            <Button color="inherit" href="/devices">
+                Devices
+              </Button>
             <Button color="inherit" onClick={this.logout}>Logout</Button>
             <Button color="inherit">Welcome {full_name}!</Button>
           </div>

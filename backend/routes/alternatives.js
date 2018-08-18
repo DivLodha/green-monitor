@@ -37,3 +37,5 @@ router.delete('/delete-alternative',function(req,res){
         res.send(result);
     })
 })
+
+module.exports = router;

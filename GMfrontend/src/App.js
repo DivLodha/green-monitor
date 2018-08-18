@@ -4,6 +4,7 @@ import Users from "./routes/users/index";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Register from "./routes/register";
+import Devices from "./routes/devices";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <Route exact path="/" component={About} />
         <Route path="/about" component={About} />
         <Route path="/register" component={Register} />
+        <Route path="/devices" component={Devices} />
         <Route path="/users" component={Users} />
       </Switch>
     );

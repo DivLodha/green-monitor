@@ -8,6 +8,12 @@ router.get('/get-devices',function(req,res){
     })
 })
 
+router.post('/get-devices-by-user',function(req,res){
+    Device.find({userId:req.body.userId},function(err,result){
+        res.send(result);
+    })
+})
+
 router.post('/add-device',function(req,res){
     Device.create({
         name: '',
@@ -37,3 +43,5 @@ router.delete('/delete-device',function(req,res){
         res.send(result);
     })
 })
+
+module.exports = router;

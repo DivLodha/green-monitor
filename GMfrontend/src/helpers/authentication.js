@@ -4,10 +4,14 @@ function isLoggedIn() {
 function userLogout() {
   localStorage.removeItem("token");
   localStorage.removeItem("name");
+  localStorage.removeItem("userId");
+
 }
-function saveUser({ token, name }) {
+function saveUser({ token, name,userId }) {
+  console.log(userId);
   localStorage.setItem("token", token);
   localStorage.setItem("name", name);
+  localStorage.setItem("userId",userId);
 }
 function getToken() {
   if (isLoggedIn()) {
@@ -17,7 +21,8 @@ function getToken() {
 function userInfo() {
   if (localStorage.getItem("name") !== null) {
     return {
-      full_name: localStorage.getItem("name")
+      full_name: localStorage.getItem("name"),
+      userId:localStorage.getItem("userId")
     };
   }
   return null;
