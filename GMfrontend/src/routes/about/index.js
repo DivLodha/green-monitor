@@ -116,7 +116,7 @@ const AboutContent = props => {
             <h2 className="title">Here is our team</h2>
             <div className="team">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-3">
                   <div className="team-player">
                     <div className="card card-plain">
                       <div className="col-md-6 ml-auto mr-auto">
@@ -144,7 +144,7 @@ const AboutContent = props => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
                   <div className="team-player">
                     <div className="card card-plain">
                       <div className="col-md-6 ml-auto mr-auto">
@@ -172,7 +172,35 @@ const AboutContent = props => {
                     </div>
                   </div>
                 </div>
-                <div className="col-md-4">
+                <div className="col-md-3">
+                  <div className="team-player">
+                    <div className="card card-plain">
+                      <div className="col-md-6 ml-auto mr-auto">
+                        <img
+                          src=""
+                          alt="Thumbnail Image"
+                          className="img-raised rounded-circle img-fluid"
+                        />
+                      </div>
+                      <h4 className="card-title">
+                        Divya Lodha
+                        <br />
+                        <small className="card-description text-muted">
+                          Graduate
+                        </small>
+                      </h4>
+                      <div className="card-body">
+                        <p className="card-description" />
+                      </div>
+                      <div className="card-footer justify-content-center">
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-linkedin" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-3">
                   <div className="team-player">
                     <div className="card card-plain">
                       <div className="col-md-6 ml-auto mr-auto">
