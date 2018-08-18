@@ -9,8 +9,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
 const classes = {
+  root: {
+    flexGrow: 1,
+  },
   card: {
     maxWidth: 275,
   },
@@ -61,12 +65,14 @@ const Loading = props => {
 };
 const DeviceList = props => {
   return (
-    <div>
-      
+    <div style={classes.root}>
+      <Grid container spacing={24}>
+        <Grid item lg={3}>
           {props.data
             ? props.data.map(device => <DeviceCard key={device.name} device={device} />)
             : null}
-        
+        </Grid>
+      </Grid>
     </div>
   );
 };
@@ -103,7 +109,7 @@ class Devices extends Component {
       const devices = await getDevices();
       console.log(devices);
       this.setState({
-        data: dummydata,
+        data: devices,
         authenticated: true
       });
     } catch (e) {
