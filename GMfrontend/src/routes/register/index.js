@@ -1,101 +1,123 @@
 import React, { Component } from "react";
 import Layout from "../../components/Layout";
 import { Redirect } from "react-router-dom";
-import { registerRequest,loginRequest } from "../../helpers/network";
-import { saveUser } from "../../helpers/authentication";
-
+import classnames from "classnames";
+import axios from "axios";
 class Register extends Component {
-  state = {
-    error: null,
-    loggedin: null
-  };
-  updateVal = e => {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
+      errors: {},
+      registered: null
+    };
+  }
+  onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  submitForm = async e => {
+  onSubmit = e => {
     e.preventDefault();
-    this.setState({
-      error: null
-    });
-    try {
-      let response = await registerRequest({
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
-      });
-      let loginResponse = await loginRequest({
-        email: this.state.email,
-        password: this.state.password
-      });
-      saveUser(loginResponse);
-      this.setState({
-        loggedin: true
-      });
-    } catch (e) {
-      this.setState({
-        error: e.email
-      });
-    }
+    const newUser = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2
+    };
+    axios
+      .post("https://green-monitor123.herokuapp.com/users/register", newUser)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ registered: true });
+      })
+      .catch(err => this.setState({ errors: err.response.data }));
   };
   render() {
+    const { errors } = this.state;
     return (
       <Layout>
-          {this.state.loggedin ? <Redirect to="/users/" /> : null}
-        <div className="row">
-          <div className="col">
-            <h1 className="heading">Please Register</h1>
+        {this.state.registered ? <Redirect to="/users/" /> : null}
+        <div className="register">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 m-auto">
+                <h1 className="display-4 text-center">Please Register</h1>
+                <form noValidate onSubmit={this.onSubmit}>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.name
+                      })}
+                      placeholder="Name"
+                      name="name"
+                      value={this.state.name}
+                      onChange={this.onChange}
+                    />
+                    {errors.name && (
+                      <div className="invalid-feedback">{errors.name}</div>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.email
+                      })}
+                      placeholder="Email Address"
+                      name="email"
+                      value={this.state.email}
+                      onChange={this.onChange}
+                    />
+                    {errors.email && (
+                      <div className="invalid-feedback">{errors.email}</div>
+                    )}
+                    <small className="form-text text-muted">
+                      This site uses Gravatar so if you want a profile image,
+                      use a Gravatar email
+                    </small>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.password
+                      })}
+                      placeholder="Password"
+                      name="password"
+                      value={this.state.password}
+                      onChange={this.onChange}
+                    />
+                    {errors.password && (
+                      <div className="invalid-feedback">{errors.password}</div>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="password"
+                      className={classnames("form-control form-control-lg", {
+                        "is-invalid": errors.password2
+                      })}
+                      placeholder="Confirm Password"
+                      name="password2"
+                      value={this.state.password2}
+                      onChange={this.onChange}
+                    />
+                    {errors.password2 && (
+                      <div className="invalid-feedback">{errors.password2}</div>
+                    )}
+                  </div>
+                  <input
+                    type="submit"
+                    className="btn btn-info btn-block mt-4"
+                  />
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-        <form onSubmit={this.submitForm}>
-          <div className="form-group">
-            <label htmlFor="exampleInputName">Name</label>
-            <input
-              name="name"
-              type="text"
-              onChange={this.updateVal}
-              className="form-control"
-              id="exampleInputName"
-              placeholder="Enter name"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
-            <input
-              name="email"
-              type="email"
-              onChange={this.updateVal}
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="Enter email"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input
-              name="password"
-              onChange={this.updateVal}
-              type="password"
-              className="form-control"
-              id="exampleInputPassword1"
-              placeholder="Password"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword2">Confirm Password</label>
-            <input
-              name="password"
-              onChange={this.updateVal}
-              type="password"
-              className="form-control"
-              id="exampleInputPassword2"
-              placeholder="Password"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Register
-          </button>
-        </form>
       </Layout>
     );
   }

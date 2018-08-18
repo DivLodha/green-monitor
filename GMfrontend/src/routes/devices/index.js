@@ -45,7 +45,7 @@ const DeviceCard = props => {
             {props.device.name}
           </Typography>
           <Typography style={classes.pos} color="textSecondary">
-            {props.device.powerUsage}
+            {props.device.powerUsage} watts
           </Typography>         
         </CardContent>
         <CardActions>

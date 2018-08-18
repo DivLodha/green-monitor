@@ -14,7 +14,8 @@ class Login extends Component {
   submitForm = async e => {
     e.preventDefault();
     this.setState({
-      error: null
+      erroremail: null,
+      errorpassword: null
     });
     try {
       let response = await loginRequest({
@@ -27,8 +28,10 @@ class Login extends Component {
       });
     } catch (e) {
       this.setState({
-        error: e.email
+        erroremail: e.email,
+        errorpassword: e.password
       });
+      console.log(e);
     }
   };
   render() {
@@ -40,10 +43,14 @@ class Login extends Component {
             <h1 className="heading">Please Login</h1>
           </div>
         </div>
-
-        {this.state.error ? (
+        {this.state.erroremail ? (
           <div className="alert alert-danger" role="alert">
-            {this.state.error}
+            {this.state.erroremail}
+          </div>
+        ) : null}
+        {this.state.errorpassword ? (
+          <div className="alert alert-danger" role="alert">
+            {this.state.errorpassword}
           </div>
         ) : null}
         <form onSubmit={this.submitForm}>
