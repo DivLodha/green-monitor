@@ -48,10 +48,10 @@ const DeviceCard = props => {
             {props.device.powerUsage} watts
           </Typography>         
         </CardContent>
-        <CardActions>
+        {/* <CardActions>
           <Button size="small">+Add Usage</Button>
           <Button size="small">Edit</Button>
-        </CardActions>
+        </CardActions> */}
       </Card>
     </div>
   );

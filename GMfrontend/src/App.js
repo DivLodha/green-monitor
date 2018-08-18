@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Register from "./routes/register";
 import Devices from "./routes/devices";
+import AlternativeList from "./routes/alternatives";
 
 class App extends Component {
   render() {
@@ -15,6 +16,8 @@ class App extends Component {
         <Route path="/register" component={Register} />
         <Route path="/devices" component={Devices} />
         <Route path="/users" component={Users} />
+        <Route path="/alternatives" component={AlternativeList} />
+
       </Switch>
     );
   }

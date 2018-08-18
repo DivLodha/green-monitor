@@ -101,9 +101,26 @@ function getDevices() {
     );
 }
 
+function getAlternatives() {
+  const user= {
+     userId: userInfo().userId
+}
+//  console.log(JSON.stringify({
+//   user }));
+ return (
+   //  new Promise((resolve, reject) => {
+     axios
+    .get('https://green-monitor123.herokuapp.com/alternative/get-alternatives',{  headers: {'Authorization': getToken(), 'Access-Control-Allow-Headers':''}})
+    .then(res => {
+      return res.data;
+    })
+    .catch(e =>console.log(e))
+   );
+}
+
 
       // .catch(err => reject(err));
   // });
 
 
-export { loginRequest, getDashboard, registerRequest,getDevices };
+export { loginRequest, getDashboard, registerRequest,getDevices,getAlternatives };

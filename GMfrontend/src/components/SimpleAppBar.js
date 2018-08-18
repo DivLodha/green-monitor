@@ -38,12 +38,10 @@ class SimpleAppBar extends Component {
             <Button color="inherit" href="/about">
                 About
               </Button>              
-              <Button color="inherit" href="/users/">
-                Add Device
+              <Button color="inherit" href="/alternatives">
+                Alternatives
               </Button>              
-            <div>
-
-             
+            <div>             
               {isLoggedIn() ? (
           <div>
             <Button color="inherit" href="/devices">
