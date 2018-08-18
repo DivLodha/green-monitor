@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Login from "./login";
 import { isLoggedIn } from "../../helpers/authentication";
 import Dashboard from "../dashboard";
+import Devices from "../devices";
 
 class App extends Component {
   render() {
@@ -13,7 +14,7 @@ class App extends Component {
           path=""
           render={props => {
             if (isLoggedIn()) {
-              return <Dashboard />;
+              return <Devices />;
             }
             return <Login />;
           }}
